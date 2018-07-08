@@ -1,0 +1,28 @@
+@tabbarPrefix: my-tab;
+
+.@{tabbarPrefix} {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    .am-tab-bar-bar{
+        background: #fff;
+        .am-tab-bar-tab{
+            .am-tab-bar-tab-icon{
+                color: rgb(148, 148, 148);
+            }
+            .am-tab-bar-tab-title{
+                color: rgb(148, 148, 148);
+            }
+            &.active{
+                .am-tab-bar-tab-icon{
+                    color: rgb(51, 163, 244);
+                }
+                .am-tab-bar-tab-title{
+                    color: rgb(51, 163, 244);
+                }
+            }
+        }
+        
+    }
+}
