@@ -4,7 +4,6 @@ class Header extends Component {
     render() {
         return (
             <NavBar
-            mode="light"
             icon={<Icon type="left" />}
             onLeftClick={() => console.log('onLeftClick')}
             rightContent={[

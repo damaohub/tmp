@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Route, NavLink, Switch } from "react-router-dom";
-
-import { TabBar } from 'antd-mobile';
 import Home from '../components/home';
 import List from '../components/list';
 import Center from '../components/center';
@@ -32,34 +30,40 @@ class Tabbar extends Component {
           <NavLink to="/" exact className="am-tab-bar-tab">
             
                 <div className="am-tab-bar-tab-icon">
+                  <i className="iconfont">&#xe602;</i>
                 </div>
                 <p className="am-tab-bar-tab-title">
-                  home
+                  任务中心
                 </p>
             
             </NavLink>
 
-            <NavLink to="/other" className="am-tab-bar-tab">
-            
-                <div className="am-tab-bar-tab-icon">
-                </div>
-                <p className="am-tab-bar-tab-title">
-                  推广中心
-                </p>
-            
-            </NavLink>
+          
 
             <NavLink to="/list" className="am-tab-bar-tab">
                 <div className="am-tab-bar-tab-icon">
+                <i className="iconfont">&#xe6c8;</i>
                 </div>
                 <p className="am-tab-bar-tab-title">
-                  任务列表
+                  订单列表
                 </p>   
+            </NavLink>
+
+            <NavLink to="/other" className="am-tab-bar-tab">
+
+              <div className="am-tab-bar-tab-icon">
+                <i className="iconfont">&#xe603;</i>
+              </div>
+              <p className="am-tab-bar-tab-title">
+                推广中心
+                </p>
+
             </NavLink>
 
             <NavLink to="/center" className="am-tab-bar-tab">
             
                 <div className="am-tab-bar-tab-icon">
+                  <i className="iconfont"> &#xe61e;</i>
                 </div>
                 <p className="am-tab-bar-tab-title">
                   个人中心
