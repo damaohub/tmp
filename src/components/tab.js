@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Route, NavLink, Switch } from "react-router-dom";
-import Home from '../components/home';
-import List from '../components/list';
-import Center from '../components/center';
-import Other from '../components/other'
+import { NavLink } from "react-router-dom";
+import './tab.less'
+
 class Tabbar extends Component {
   constructor(props) {
     super(props);
@@ -17,12 +15,7 @@ class Tabbar extends Component {
     return(
       <div className="my-tab">
         <div className="am-tabs-content-wrap">
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route  path='/list' component={List} />
-          <Route  path='/center' component={Center} />
-          <Route  path='/other' component={Other} />
-        </Switch>
+          {this.props.children}
         </div>
       
         <div className="am-tabs-tab-bar-wrap">
