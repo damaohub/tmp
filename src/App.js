@@ -3,11 +3,11 @@ import './fonts/iconfont.css'
 import './App.less';
 import Header from './components/header';
 import { Route, Switch } from "react-router-dom";
-import Home from './containers/home';
-import List from './containers/list';
-import Center from './containers/center';
-import Other from './containers/other'
-import Other1 from './containers/other1'
+import Home from './views/home';
+import List from './views/list';
+import Center from './views/center';
+import Other from './views/other'
+import Other1 from './views/other1'
 class App extends Component {
   constructor(props) {
     super(props);
