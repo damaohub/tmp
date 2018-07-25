@@ -18,7 +18,7 @@ class Header extends Component {
                 <Icon key="1" type="ellipsis" />,
             ]}
             >
-            {this.state.title}
+            {this.props.routerName}
             </NavBar>
         )
     }
