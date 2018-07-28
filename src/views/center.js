@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../components/header';
 import Tabbar from '../components/tab'
 class Center extends Component {
   constructor(props) {
@@ -10,9 +11,12 @@ class Center extends Component {
 
   render() {
     return (
-      <Tabbar>
-        <h1>{this.state.title}</h1>
-      </Tabbar>
+      <div>
+        <Header title={this.state.title}/>
+        <Tabbar>
+          <h1>{this.state.title}</h1>
+        </Tabbar>
+      </div>
     )
   }
 }

@@ -3,8 +3,7 @@ import { NavBar, Icon } from 'antd-mobile';
 class Header extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-          title: '任务中心'
+        this.state ={
         };
     }
 
@@ -18,7 +17,7 @@ class Header extends Component {
                 <Icon key="1" type="ellipsis" />,
             ]}
             >
-            {this.props.routerName}
+            {this.props.title}
             </NavBar>
         )
     }

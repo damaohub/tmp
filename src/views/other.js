@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link } from "react-router-dom";
+import Header from '../components/header';
 import Tabbar from '../components/tab'
 
 class Other extends Component {
@@ -12,11 +12,12 @@ class Other extends Component {
 
   render() {
     return (
-      <Tabbar>
-        <h1>{this.state.title}</h1>
-        <Link to="/other1">other1</Link>
-        
-      </Tabbar>
+      <div>
+        <Header title={this.state.title}/>
+        <Tabbar>
+          <h1>{this.state.title}</h1>
+        </Tabbar>
+      </div>
     )
   }
 }

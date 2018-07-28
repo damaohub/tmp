@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Header from '../components/header';
 class Other extends Component {
   constructor(props) {
     super(props);
@@ -10,8 +10,11 @@ class Other extends Component {
 
   render() {
     return (
-     
+      <div>
+      <Header title={this.state.title}/>
         <h1>{this.state.title}</h1>
+      </div>
+        
     
     )
   }

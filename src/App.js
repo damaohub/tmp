@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './fonts/iconfont.css'
 import './App.less';
-import Header from './components/header';
+
 import { Route, Switch } from "react-router-dom";
 import Home from './views/home';
 import List from './views/list';
@@ -18,9 +18,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header routerName={this.state.routerName}/>
+        
         <Switch>
-          <Route exact path='/' component={Home} {}/>
+          <Route exact path='/' component={Home}/>
           <Route path='/list' component={List} />
           <Route path='/center' component={Center} />
           <Route path='/other' component={Other} />
