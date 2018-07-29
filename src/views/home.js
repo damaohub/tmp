@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import './home.less'
 import Tabbar from '../components/tab'
 import Header from '../components/header';
-import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
+import { Card, WingBlank, WhiteSpace, Flex, Button } from 'antd-mobile';
 
 class Home extends Component {
   constructor(props) {
@@ -15,31 +16,65 @@ class Home extends Component {
     return (
       <div>
         <Header title={this.state.title}/>
-        <Tabbar>
-        <WingBlank size="lg">
-        <WhiteSpace size="lg" />
-        <Card>
+        <Tabbar>  
+          
+        <WingBlank size="md" >
+        <WhiteSpace size="md" />
+        <Card >
           <Card.Body>
-            <div>
-              this is Card Body
-            </div>
+            <Flex justify="between">
+              <Flex.Item>
+                <p>订单编号：4243243</p>
+                <p>可接等级：</p>
+              </Flex.Item>
+              <Flex.Item>
+                <p>到期时间：<span className="color-danger">20:00</span></p>
+                <p>价格：<span></span></p>
+              </Flex.Item>
+            </Flex>
+            <p className=" btn-center">
+            <Button type="primary" size="small">领取任务</Button>
+            </p> 
           </Card.Body>
         </Card>
+        <WhiteSpace size="md" />
         <Card>
-          <Card.Body>
-            <div>
-              this is Card Body
-            </div>
+        <Card.Body>
+            <Flex justify="between">
+              <Flex.Item>
+                <p>订单编号：4243243</p>
+                <p>可接等级：</p>
+              </Flex.Item>
+              <Flex.Item>
+                <p>到期时间：<span className="color-danger">20:00</span></p>
+                <p>价格：<span></span></p>
+              </Flex.Item>
+            </Flex>
+            <p className=" btn-center">
+            <Button type="primary" size="small">领取任务</Button>
+            </p> 
           </Card.Body>
-        </Card>   
+        </Card>
+        <WhiteSpace size="md" />
         <Card>
-          <Card.Body>
-            <div>
-              this is Card Body
-            </div>
+        <Card.Body>
+            <Flex justify="between">
+              <Flex.Item>
+                <p>订单编号：4243243</p>
+                <p>可接等级：</p>
+              </Flex.Item>
+              <Flex.Item>
+                <p>到期时间：<span className="color-danger">20:00</span></p>
+                <p>价格：<span></span></p>
+              </Flex.Item>
+            </Flex>
+            <p className=" btn-center">
+            <Button type="primary" size="small">领取任务</Button>
+            </p> 
           </Card.Body>
         </Card>     
         </WingBlank>
+        
         </Tabbar>
       </div>
     )
