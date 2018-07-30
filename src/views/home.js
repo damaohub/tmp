@@ -32,7 +32,7 @@ class Home extends Component {
                 <p>价格：<span></span></p>
               </Flex.Item>
             </Flex>
-            <p className=" btn-center">
+            <p className="btn-center">
             <Button type="primary" size="small">领取任务</Button>
             </p> 
           </Card.Body>
@@ -72,7 +72,25 @@ class Home extends Component {
             <Button type="primary" size="small">领取任务</Button>
             </p> 
           </Card.Body>
-        </Card>     
+        </Card>  
+            <WhiteSpace size="md" />
+            <Card>
+              <Card.Body>
+                <Flex justify="between">
+                  <Flex.Item>
+                    <p>订单编号：4243243</p>
+                    <p>可接等级：</p>
+                  </Flex.Item>
+                  <Flex.Item>
+                    <p>到期时间：<span className="color-danger">20:00</span></p>
+                    <p>价格：<span></span></p>
+                  </Flex.Item>
+                </Flex>
+                <p className=" btn-center">
+                  <Button type="primary" size="small">领取任务</Button>
+                </p>
+              </Card.Body>
+            </Card>
         </WingBlank>
         
         </Tabbar>

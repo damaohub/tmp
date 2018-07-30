@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './list.less'
 import Header from '../components/header'
 import Tabbar from '../components/tab'
-import { Tabs, Accordion, List, Flex } from 'antd-mobile';
+import { Tabs, Accordion, WingBlank, Flex } from 'antd-mobile';
+import { spawn } from 'child_process';
 class EvoList extends Component {
   constructor(props) {
     super(props);
@@ -13,9 +14,9 @@ class EvoList extends Component {
 
   render() {
     const tabs = [
-      { title: 'First Tab', sub: '1'},
-      { title: 'Second Tab', sub: '2' },
-      { title: 'Third Tab', sub: '3' },
+      { title: '正在进行' },
+      { title: '申诉列表' },
+      { title: '历史列表' },
     ];
    
     return (
@@ -30,13 +31,43 @@ class EvoList extends Component {
           animated="false"
           
         >
-          <div >
+          <div>
           <Accordion>
-            <Accordion.Panel header="Title 2">
-            this is panel content2 or other
+            <Accordion.Panel 
+                  header={
+                    <Flex><Flex.Item>订单号：1231234</Flex.Item><Flex.Item className="text-right color-danger">12.5元</Flex.Item></Flex>
+                  }
+            >
+              <WingBlank>
+                    <Flex align="start">
+                    <Flex.Item>
+                        <div>任务要求：辅助者帐号必须在北京地区</div>
+                        <div>类型：非好友解封填资料</div>
+                        <div className="color-gray">可接受等级：</div>
+                    </Flex.Item>
+                      <Flex.Item className="qrcode">
+                        <img src="http://tech.cnr.cn/techgd/20141223/W020141223386402989617.gif" alt=""/>
+                    </Flex.Item>
+                  </Flex>
+              </WingBlank>
             </Accordion.Panel>
-            <Accordion.Panel header="dadg">
-            this is panel content2 or other
+            <Accordion.Panel 
+              header={
+                <Flex><Flex.Item>订单号：1231234</Flex.Item><Flex.Item className="text-right color-danger">12.5元</Flex.Item></Flex>
+              }
+            >
+              <WingBlank>
+                <Flex >
+                  <Flex.Item>
+                    <div>任务要求：辅助者帐号必须在北京地区</div>
+                    <div>类型：非好友解封填资料</div>
+                    <div className="color-gray">可接受等级：</div>
+                  </Flex.Item>
+                  <Flex.Item className="qrcode">
+                    <img src="http://tech.cnr.cn/techgd/20141223/W020141223386402989617.gif" alt="" />
+                  </Flex.Item>
+                </Flex>
+              </WingBlank>
             </Accordion.Panel>
           </Accordion>
           </div>
