@@ -38,7 +38,7 @@ class Tabbar extends Component {
                 </p>   
             </NavLink>
 
-            <NavLink to="/other" className="am-tab-bar-tab">
+            <NavLink to="/promt" className="am-tab-bar-tab">
 
               <div className="am-tab-bar-tab-icon">
                 <i className="iconfont">&#xe603;</i>

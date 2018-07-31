@@ -6,7 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from './views/home';
 import List from './views/list';
 import Center from './views/center';
-import Other from './views/other'
+import Promt from './views/promt'
 import Other1 from './views/other1'
 class App extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class App extends Component {
           <Route exact path='/' component={Home}/>
           <Route path='/list' component={List} />
           <Route path='/center' component={Center} />
-          <Route path='/other' component={Other} />
+          <Route path='/promt' component={Promt} />
           <Route path='/other1' component={Other1} />
         </Switch>
 

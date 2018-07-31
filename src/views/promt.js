@@ -6,7 +6,7 @@ class Other extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '其他什么'
+      title: '推广中心'
     };
   }
 

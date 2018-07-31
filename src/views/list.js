@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './list.less'
 import Header from '../components/header'
 import Tabbar from '../components/tab'
-import { Tabs, Accordion, WingBlank, Flex } from 'antd-mobile';
+import { Tabs, Accordion, WingBlank, Flex, List } from 'antd-mobile';
 
 class EvoList extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class EvoList extends Component {
   }
 
   render() {
-    
+
     const tabs = [
       { title: '正在进行' },
       { title: '申诉列表' },
@@ -32,7 +32,7 @@ class EvoList extends Component {
             animated="false"
 
           >
-            <div>
+            <div className="jinxing-list">
               <Accordion>
                 <Accordion.Panel
                   header={
@@ -72,11 +72,30 @@ class EvoList extends Component {
                 </Accordion.Panel>
               </Accordion>
             </div>
-            <div style={{ display: 'block', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-              Content of second tab
+            <div className="shensu-list">
+              <List>
+                <List.Item extra={<span className="color-danger">拒绝</span>}>ID:1231231232</List.Item>
+              </List> 
+              <List>
+                <List.Item extra={<span className="color-success">通过</span>}>ID:1231hd1232</List.Item>
+              </List>
+              <List>
+                <List.Item extra={<span className="color-warning">审核中</span>}>ID:1231hd1232</List.Item>
+              </List>
+              <List>
+                <List.Item extra={<span className="color-primary">其他</span>}>ID:1231hd1232</List.Item>
+              </List>
             </div>
-            <div style={{ display: 'block', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-              Content of third tab
+            <div className="history-list">
+            <List>
+                <List.Item extra={<span className="color-danger">22.5元</span>}>ID:1231231232</List.Item>
+            </List>
+            <List>
+                <List.Item extra={<span className="color-danger">22.5元</span>}>ID:1231231232</List.Item>
+            </List>
+            <List>
+                <List.Item extra={<span className="color-danger">22.5元</span>}>ID:1231231232</List.Item>
+            </List>
             </div>
           </Tabs>
         </div>
