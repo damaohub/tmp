@@ -13,9 +13,10 @@ class Center extends Component {
     return (
       <div>
         <Header title={this.state.title}/>
-        <Tabbar>
-          <h1>{this.state.title}</h1>
-        </Tabbar>
+        <Tabbar />
+        <div className="content">
+         <h1>{this.state.title}</h1>
+        </div>
       </div>
     )
   }

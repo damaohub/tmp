@@ -1,7 +1,6 @@
 @tabbarPrefix: my-tab;
 
 .@{tabbarPrefix} {
-   
     .am-tab-bar-bar{
         background: #fff;
          position: fixed;  
@@ -23,6 +22,9 @@
                 }
             }
         }
-        
+       
     }
+    & ~ .content{
+        bottom: 50px;
+    } 
 }

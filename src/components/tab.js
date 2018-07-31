@@ -12,12 +12,9 @@ class Tabbar extends Component {
   }
   render () {
     return(
-      <div className="my-tab">
-        <div className="am-tabs-content-wrap">
-          {this.props.children}
-        </div>
       
-        <div className="am-tabs-tab-bar-wrap">
+      
+        <div className="my-tab am-tabs-tab-bar-wrap">
           <div className="am-tab-bar-bar">
           <NavLink to="/" exact className="am-tab-bar-tab">
             
@@ -65,11 +62,7 @@ class Tabbar extends Component {
 
           </div>
         </div>
-      <div>
-     
-      </div>
       
-      </div>
       
     )
   }
