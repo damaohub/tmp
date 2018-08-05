@@ -14,7 +14,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="page-home">
+      <div className="page page-home">
         <Header title={this.state.title}/>
         <Tabbar />  
         <div className="content">
