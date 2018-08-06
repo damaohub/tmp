@@ -19,8 +19,23 @@
                 }
             }
             .am-card-footer{
-                .hairline('bottom')
-
+                position: relative;
+                padding: 15px 15px 6px;
+                &:before{
+                    content: '';
+                    position: absolute;
+                    background-color: #ddd;
+                    display: block;
+                    z-index: 1;
+                    top: 0;
+                    right: auto;
+                    bottom: auto;
+                    left: 0;
+                    width: 100%;
+                    height: 1PX;
+                    transform-origin: 50% 50%;
+                    transform: scaleY(0.5);  
+                }
             }
         }
     }
