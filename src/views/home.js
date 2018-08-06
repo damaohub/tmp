@@ -46,7 +46,7 @@ class Home extends Component {
                 <p>订单编号：4243243</p>
                 <p>可接等级：</p>
               </Flex.Item>
-              <Flex.Item>
+              <Flex.Item >
                 <p>到期时间：<span className="color-danger">20:00</span></p>
                 <p>价格：<span></span></p>
               </Flex.Item>
