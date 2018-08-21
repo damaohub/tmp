@@ -102,8 +102,8 @@ class Other extends Component {
 
               </Card.Header>
               <Card.Body>
-                <Flex justify="between"><div>推广码：</div><div className="pcode">317896391231</div></Flex>
-                <Flex justify="between"><div style={{minWidth: "5em" }}>推广链接：</div> <div className="plink">https://www.wj.ink/spread.action?con=E07AAC1253</div> </Flex>
+                <Flex justify="between" className="margin-bottom"><div>推广码：</div><div className="pcode">317896391231</div></Flex>
+                <Flex justify="between" className="margin-bottom"><div style={{minWidth: "5em" }}>推广链接：</div> <div className="plink">https://www.wj.ink/spread.action?con=E07AAC1253</div> </Flex>
               </Card.Body>
             <Card.Footer
                 content={<span className="text-color-primary">复制推广码</span>}

@@ -26,8 +26,6 @@ class EvoList extends Component {
         <Tabbar />
         <div className="content">
           <Tabs tabs={tabs}
-            onChange={(tab, index) => { console.log('onChange', index, tab); }}
-            onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
             swipeable="false"
             animated="false"
 
@@ -74,27 +72,27 @@ class EvoList extends Component {
             </div>
             <div className="shensu-list">
               <List>
-                <List.Item extra={<span className="color-danger">拒绝</span>}>ID:1231231232</List.Item>
+                <List.Item extra={<span className="text-color-danger">拒绝</span>}>ID:1231231232</List.Item>
               </List> 
               <List>
-                <List.Item extra={<span className="color-success">通过</span>}>ID:1231hd1232</List.Item>
+                <List.Item extra={<span className="text-color-success">通过</span>}>ID:1231hd1232</List.Item>
               </List>
               <List>
-                <List.Item extra={<span className="color-warning">审核中</span>}>ID:1231hd1232</List.Item>
+                <List.Item extra={<span className="text-color-warning">审核中</span>}>ID:1231hd1232</List.Item>
               </List>
               <List>
-                <List.Item extra={<span className="color-primary">其他</span>}>ID:1231hd1232</List.Item>
+                <List.Item extra={<span className="text-color-primary">其他</span>}>ID:1231hd1232</List.Item>
               </List>
             </div>
             <div className="history-list">
             <List>
-                <List.Item extra={<span className="color-danger">22.5元</span>}>ID:1231231232</List.Item>
+                <List.Item extra={<span className="text-color-danger">22.5元</span>}>ID:1231231232</List.Item>
             </List>
             <List>
-                <List.Item extra={<span className="color-danger">22.5元</span>}>ID:1231231232</List.Item>
+                <List.Item extra={<span className="text-color-danger">22.5元</span>}>ID:1231231232</List.Item>
             </List>
             <List>
-                <List.Item extra={<span className="color-danger">22.5元</span>}>ID:1231231232</List.Item>
+                <List.Item extra={<span className="text-color-danger">22.5元</span>}>ID:1231231232</List.Item>
             </List>
             </div>
           </Tabs>
