@@ -7,7 +7,7 @@ import Home from './views/home';
 import List from './views/list';
 import Center from './views/center';
 import Promt from './views/promt'
-import Other1 from './views/other1'
+import Login from './views/login'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +24,7 @@ class App extends Component {
           <Route path='/list' component={List} />
           <Route path='/center' component={Center} />
           <Route path='/promt' component={Promt} />
-          <Route path='/other1' component={Other1} />
+          <Route path='/login' component={Login} />
         </Switch>
 
       </div>

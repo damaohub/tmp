@@ -1,0 +1,145 @@
+.page-login{
+    .content{
+        background: linear-gradient(#2ac0fd, #4f8ffd);
+        .logo-img{
+            width: 95px;
+            margin: 36px auto 0;
+            padding: 20px;
+            border: 4px solid #f4f4f4;
+            background: transparent;
+            border-radius: 50%;
+            box-sizing: border-box;
+            img{
+                width: 100%;
+            }
+        }
+
+        .login-list{
+            .am-list-body{
+                background-color: transparent;
+                &::before,&::after{
+                    display: none;
+                }
+                .am-list-item{
+                    background-color: transparent;
+                    height: 5em;
+                    .am-list-thumb {
+                        padding-top: 2em;
+                        .iconfont {
+                            font-size: 30px;
+                            color: #fff;
+                        }
+                    }
+                    .am-list-line{
+                        &::after{display: none;}
+                        .am-list-content{
+                            padding-top: 2em;
+                            .group {
+                                position:relative;
+                    
+                                input {
+                                  background: none;
+                                  padding:10px 10px 10px 5px;
+                                  display:block;
+                                  width:100%;
+                                  border:none;
+                                  border-bottom:1px solid #fff;
+                                  &:focus{
+                                    outline:none;
+                                    border-bottom-color:transparent;
+                                    &~label {
+                                      top:-20px;
+                                      font-size:14px;
+                                      color:#fff;
+                                    }
+                                    &~.group-bar{
+                                      &:before,
+                                      &:after{
+                                        width: 50%;
+                                      }
+                                    }
+                                    &~.highlight {
+                                      -webkit-animation:inputHighlighter 0.3s ease;
+                                      -moz-animation:inputHighlighter 0.3s ease;
+                                      animation:inputHighlighter 0.3s ease;
+                                    }
+                                  }
+                                  &:valid{
+                                    &~label{
+                                      top:-20px;
+                                      font-size:14px;
+                                      text-indent: -2.35em;
+                                      color: #e7e7e7;
+                                    }
+                                  }
+                                }
+                                label {
+                                  color:#fff;
+                                  font-size:18px;
+                                  font-weight:normal;
+                                  position:absolute;
+                                  pointer-events:none;
+                                  left:5px;
+                                  top:10px;
+                                  transition:0.2s ease all;
+                                  -moz-transition:0.2s ease all;
+                                  -webkit-transition:0.2s ease all;
+                                }
+                                .group-bar {
+                                  position:relative;
+                                  display:block;
+                                  width:100%;
+                                  height: auto;
+                                  &:before,
+                                  &:after{
+                                    content:'';
+                                    height:2px;
+                                    width:0;
+                                    bottom:1px;
+                                    position:absolute;
+                                    background:#fff;
+                                    transition:0.2s ease all;
+                                    -moz-transition:0.2s ease all;
+                                    -webkit-transition:0.2s ease all;
+                                  }
+                                  &:before{
+                                    left:50%;
+                                  }
+                                  &:after{
+                                    right:50%;
+                                  }
+                                }
+                                .highlight {
+                                  position:absolute;
+                                  height:60%;
+                                  width:100px;
+                                  top:25%;
+                                  left:0;
+                                  pointer-events:none;
+                                  opacity:0.5;
+                                }
+                    
+                              }
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        .btn{
+           margin: 50px;
+           .am-button{
+               letter-spacing: 14px;
+                text-indent: 14px;
+                border-radius: 30px;
+                
+            
+           }
+        }
+
+    }
+}
