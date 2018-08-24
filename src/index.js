@@ -2,16 +2,15 @@ import "babel-polyfill";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'
-//import { createStore } from 'redux'
+import store from './store/index'
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-//let store = createStore(myApp)
 
 ReactDOM.render((
-    <Provider >
+    <Provider store={store}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
