@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import './login.less'
 import logo from '../fonts/logo-big.png'
 import { List, WingBlank, WhiteSpace, Flex, Button } from 'antd-mobile';
 import Input from '../components/input'
+import { loginByUsername } from '../services/user'
+import { a_setToken } from '../store/actions'
 
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '任务中心',
       username: '',
       password: ''
     };
@@ -19,10 +21,19 @@ class Home extends Component {
     this.setState({[e.target.name]:  e.target.value})
   }
 
-  handleLogin = (e) => {
-    console.log(this.state.username)
-    console.log(this.state.password)
-    alert('login')
+  handleLogin = (e,dispatch) => {
+    if(this.state.username.trim().length!==0 && this.state.password.trim().length!==0) {
+      loginByUsername(this.state.username, this.state.password).then(
+        response => {
+          dispatch(a_setToken(response.token))
+        }
+      ).catch(
+        console.log(e)
+      )
+
+    
+    }
+    
   }
 
   render() {
@@ -41,12 +52,12 @@ class Home extends Component {
               <List.Item 
                   thumb={<i className="iconfont ">&#xe64a;</i>}
               >
-                <Input label="输入手机号、账号" name="username" vauleChange={this.vauleChange}></Input>
+                <Input type="text" label="输入手机号、账号" name="username" vauleChange={this.vauleChange}></Input>
               </List.Item>
               <List.Item 
                   thumb={<i className="iconfont ">&#xe62a;</i>}
               >
-                <Input label="输入密码" name="password" vauleChange={this.vauleChange}></Input>
+                <Input  type="password" label="输入密码" name="password" vauleChange={this.vauleChange}></Input>
               </List.Item>
           </List>
           <WhiteSpace size="lg"></WhiteSpace>
@@ -60,4 +71,5 @@ class Home extends Component {
     )
   }
 }
+Home = connect()(Home)
 export default Home

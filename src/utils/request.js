@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { getToken } from './auth'
-import store from '..store'
+import store from '../store'
 import { Toast, Modal } from 'antd-mobile';
 
 // create an axios instance
 const service = axios.create({
-    baseURL: "http://localhost:3001/apis/", // api的base_url
+    baseURL: "http://localhost:3001/api/", // api的base_url
     timeout: 5000 // request timeout
 })
 
@@ -36,7 +36,7 @@ service.interceptors.response.use(
       if (res.code !== 20000) {
         Toast.fail(
           res.msg,
-          5 * 1000,
+          2,
           () => {
             window.location.reload()
           }
@@ -65,7 +65,10 @@ service.interceptors.response.use(
       console.log('err' + error)// for debug
       Toast.fail(
         error.message,
-        5 * 1000
+        2,
+        () => {
+          window.location.reload()
+        }
       )
       return Promise.reject(error)
     }
