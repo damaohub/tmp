@@ -36,7 +36,7 @@ service.interceptors.response.use(
       if (res.code !== 20000) {
         Toast.fail(
           res.msg,
-          2,
+          3,
           () => {
             window.location.reload()
           }

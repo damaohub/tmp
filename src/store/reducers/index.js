@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { InitToken } from './actions'
+import { InitToken } from '../actions'
 
 const token = (state = InitToken.token, action) => {
     switch (action.type) {

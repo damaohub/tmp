@@ -8,12 +8,13 @@ import { loginByUsername } from '../services/user'
 import { a_setToken } from '../store/actions'
 
 
-class Home extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: ''
+      token: null,
+      username: '15538307508',
+      password: 'admin666'
     };
   }
 
@@ -21,16 +22,14 @@ class Home extends Component {
     this.setState({[e.target.name]:  e.target.value})
   }
 
-  handleLogin = (e,dispatch) => {
+  handleLogin = (e) => {
     if(this.state.username.trim().length!==0 && this.state.password.trim().length!==0) {
       loginByUsername(this.state.username, this.state.password).then(
         response => {
-          dispatch(a_setToken(response.token))
+         this.props.dispatch(a_setToken(response.data.token))
+         
         }
-      ).catch(
-        console.log(e)
       )
-
     
     }
     
@@ -52,12 +51,12 @@ class Home extends Component {
               <List.Item 
                   thumb={<i className="iconfont ">&#xe64a;</i>}
               >
-                <Input type="text" label="输入手机号、账号" name="username" vauleChange={this.vauleChange}></Input>
+                <Input type="text" label="输入手机号、账号" name="username" value={this.state.username} vauleChange={this.vauleChange}></Input>
               </List.Item>
               <List.Item 
                   thumb={<i className="iconfont ">&#xe62a;</i>}
               >
-                <Input  type="password" label="输入密码" name="password" vauleChange={this.vauleChange}></Input>
+                <Input  type="password" label="输入密码" name="password" value={this.state.password} vauleChange={this.vauleChange}></Input>
               </List.Item>
           </List>
           <WhiteSpace size="lg"></WhiteSpace>
@@ -71,5 +70,6 @@ class Home extends Component {
     )
   }
 }
-Home = connect()(Home)
-export default Home
+
+Login = connect()(Login)
+export default Login

@@ -8,7 +8,7 @@ export const InitToken =  {
 export const a_setToken = (token) => {
     return {
         type: 'SET_TOKEN',
-        token: token
+        token
     }
 }
 
