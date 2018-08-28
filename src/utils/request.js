@@ -47,7 +47,7 @@ service.interceptors.response.use(
           Modal.confirm('提示！','你已被登出，可以取消继续留在该页面，或者重新登录', [
             { text: '取消', onPress: () => console.log('cancel') },
             { text: '重新登录', onPress: () => {
-              console.log('ok')
+              this.props.history.push('/login')
             }}
           ])
           .then(() => {
