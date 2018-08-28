@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import './home.less'
 import Tabbar from '../components/tab'
 import Header from '../components/header';
-import { Card, WingBlank, WhiteSpace, Flex, Button } from 'antd-mobile';
+import { Card, WingBlank, WhiteSpace, Flex, Button, Toast } from 'antd-mobile';
+
+import { orders } from '../services/index'
+
+const mapStateToProps = (state,ownProps) => {
+  return {
+    token: state.token
+  }
+}
 
 class Home extends Component {
   constructor(props) {
@@ -10,6 +19,22 @@ class Home extends Component {
     this.state = {
       title: '任务中心'
     };
+  }
+
+  componentDidMount () {
+    orders().then(
+      res => {
+        console.log(res)
+      }
+    ).catch(
+      e => {
+        console.log(e)
+        Toast.fail('数据请求失败' + e,3)
+      }
+    )
+  }
+  handleTest = (e) => {
+    
   }
 
   render() {
@@ -34,7 +59,7 @@ class Home extends Component {
               </Flex.Item>
             </Flex>
             <p className="btn-center">
-            <Button type="primary" size="small">领取任务</Button>
+            <Button type="primary" size="small" onClick={this.handleTest}>领取任务</Button>
             </p> 
           </Card.Body>
         </Card>
@@ -119,4 +144,7 @@ class Home extends Component {
     )
   }
 }
+Home = connect(
+  mapStateToProps
+)(Home)
 export default Home

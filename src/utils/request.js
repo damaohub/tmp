@@ -36,10 +36,10 @@ service.interceptors.response.use(
       if (res.code !== 20000) {
         Toast.fail(
           res.msg,
-          3,
-          () => {
-            window.location.reload()
-          }
+          3
+          // () => {
+          //   window.location.reload()
+          // }
         )
   
         // 50008:非法的token; 50012:其他客户端登录了;  50014:Token 过期了;
