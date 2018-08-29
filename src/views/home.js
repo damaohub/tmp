@@ -29,7 +29,7 @@ class Home extends Component {
     ).catch(
       e => {
         console.log(e)
-        Toast.fail('数据请求失败' + e,3)
+        Toast.fail('数据请求失败',2)
       }
     )
   }

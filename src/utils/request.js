@@ -2,6 +2,7 @@ import axios from 'axios'
 import { getToken } from './auth'
 import store from '../store'
 import { Toast, Modal } from 'antd-mobile';
+import { connect } from 'net';
 
 // create an axios instance
 const service = axios.create({
@@ -44,10 +45,10 @@ service.interceptors.response.use(
   
         // 50008:非法的token; 50012:其他客户端登录了;  50014:Token 过期了;
         if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
-          Modal.alert('提示！','你已被登出，可以取消继续留在该页面，或者重新登录', [
-            { text: '取消', onPress: () => console.log('cancel') },
+          window.location.replace('/login')
+          Modal.alert('提示！','你已被登出，请重新登录', [
             { text: '重新登录', onPress: () => {
-              this.props.history.push('/login')
+              window.location.replace('/login')
             }}
           ])
           .then(() => {
