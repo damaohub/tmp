@@ -1,8 +1,19 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware  } from 'redux'
 import todoApp from './reducers/index'
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+
+const middleware = [ thunkMiddleware ]
+if (process.env.NODE_ENV !== 'production') {
+  middleware.push(createLogger())
+}
+
+const store = createStore(
+  todoApp,
+  applyMiddleware(...middleware)
+)
 
 
-let store = createStore(todoApp)
 
 // 打印初始状态
 console.log(store.getState())

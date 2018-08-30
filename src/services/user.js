@@ -2,13 +2,10 @@ import request from '../utils/request';
 
 
 
-export function loginByUsername(username, password) {
+export function loginByUsername(userInfo) {
     return request({
         url: 'login',
         method: 'post',
-        data: {
-            username,
-            password
-        }
+        data:userInfo
     })
 }
