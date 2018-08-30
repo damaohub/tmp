@@ -3,12 +3,9 @@ import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom';
 import './login.less'
 import logo from '../fonts/logo-big.png'
-import { List, WingBlank, WhiteSpace, Flex, Button, Toast } from 'antd-mobile';
+import { List, WingBlank, WhiteSpace, Flex, Button, Toast } from 'antd-mobile'
 import Input from '../components/input'
-import { loginByUsername } from '../services/user'
-import { setToken } from '../utils/auth'
 import { loginAction } from '../store/actions';
-import store from '../store'
 
 class Login extends Component {
   constructor(props) {
@@ -36,26 +33,19 @@ class Login extends Component {
 
   handleLogin = (e) => {
     if(this.state.username.trim().length!==0 && this.state.password.trim().length!==0) {
-      this.props.dispatch(loginAction({username:this.state.username,password:this.state.password}))
-
-
-
-    //   loginByUsername().then(
-    //     response => {
-    //      this.setState({isLoading: true, isDisabled: true})
-    //      setToken(response.data.token) //redux 从cookie中获取初始token
-    //      this.props.dispatch(a_setToken(response.data.token))
+      let userInfo = {username: this.state.username,password: this.state.password}
+      this.props.dispatch(loginAction(userInfo)).then( 
+        res => {
+          this.setState({isLoading: true, isDisabled: true})
+          Toast.success('登录成功！',2, () => {
+            this.props.history.push('/')
+            this.setState({isLoading: false, isDisabled: false})
+          })
+        }
         
-    //      Toast.success(store.token, 3, () => {
-    //       //this.props.history.push('/')
-    //       console.log(store.token)
-    //       this.setState({isLoading: false, isDisabled: false})
-    //      })
-    //     }
-    //  ).catch( e => {
-    //    console.log(e)
-    //  })
-    
+      ).catch(
+        e => console.log(e)
+      )   
     }
     
   }

@@ -4,7 +4,7 @@ import './home.less'
 import Tabbar from '../components/tab'
 import Header from '../components/header';
 import { Card, WingBlank, WhiteSpace, Flex, Button, Toast } from 'antd-mobile';
-
+import store from '../store'
 import { orders } from '../services/index'
 
 const mapStateToProps = (state,ownProps) => {
@@ -22,16 +22,18 @@ class Home extends Component {
   }
 
   componentDidMount () {
-    orders().then(
-      res => {
-        console.log(res)
-      }
-    ).catch(
-      e => {
-        console.log(e)
-        Toast.fail('数据请求失败',2)
-      }
-    )
+    console.log(store.getState())
+    
+    // orders().then(
+    //   res => {
+    //     console.log(res)
+    //   }
+    // ).catch(
+    //   e => {
+    //     console.log(e)
+    //     Toast.fail('数据请求失败',2)
+    //   }
+    // )
   }
   handleTest = (e) => {
     

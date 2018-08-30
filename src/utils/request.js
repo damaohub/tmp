@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getToken } from './auth'
 import store from '../store'
 import { Toast, Modal } from 'antd-mobile';
-import { connect } from 'net';
+
 
 // create an axios instance
 const service = axios.create({
