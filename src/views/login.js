@@ -5,7 +5,7 @@ import './login.less'
 import logo from '../fonts/logo-big.png'
 import { List, WingBlank, WhiteSpace, Flex, Button, Toast } from 'antd-mobile'
 import Input from '../components/input'
-import { loginAction } from '../store/actions';
+import { loginHandel } from '../store/actions';
 
 class Login extends Component {
   constructor(props) {
@@ -34,12 +34,11 @@ class Login extends Component {
   handleLogin = (e) => {
     if(this.state.username.trim().length!==0 && this.state.password.trim().length!==0) {
       let userInfo = {username: this.state.username,password: this.state.password}
-      this.props.dispatch(loginAction(userInfo)).then( 
+      this.props.dispatch(loginHandel(userInfo)).then( 
         res => {
           this.setState({isLoading: true, isDisabled: true})
           Toast.success('登录成功！',2, () => {
             this.props.history.push('/')
-            this.setState({isLoading: false, isDisabled: false})
           })
         }
         

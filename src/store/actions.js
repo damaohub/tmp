@@ -1,10 +1,10 @@
 
-import { setToken } from '../utils/auth'
+import { getToken, setToken } from '../utils/auth'
 import {loginByUsername} from '../services/user'
-
+import { orders } from '../services/index'
 
 export const InitToken =  {
-   token:  null
+   token: getToken() ||null
 }
 
 export const a_setToken = (token) => {
@@ -21,7 +21,7 @@ export const a_removeToken = () => {
     }
 }
 
-export const loginAction = userInfo => dispatch => {
+export const loginHandel = userInfo => dispatch => {
    return new Promise((resolve, reject) => {
         loginByUsername(userInfo).then(
             res => {
@@ -32,8 +32,27 @@ export const loginAction = userInfo => dispatch => {
                 e => { reject(e) }
             )
             
+    }) 
+}
+
+
+
+export const requestOrder = (orders) => {
+    return {
+        type: 'REQUEST_ORDER',
+        orders
+    }
+}
+
+export const ordersHandel = () => dispatch => {
+    return new Promise((resolve, reject) => {
+        orders().then(
+            res => {
+                dispatch(requestOrder(res.data))
+                resolve()
+            }
+        ).catch(
+            e => { reject(e) }
+        )
     })
-
-
-    
 }

@@ -10,9 +10,18 @@ const token = (state = InitToken.token, action) => {
     }
 }
 
+const orders = (state = [], action) => {
+    switch (action.type) {
+        case 'REQUEST_ORDER':
+            return action.orders
+        default:
+            return state
+    }
+}
 
 const todoApp = combineReducers({
-    token
+    token,
+    orders
   })
   
-  export default todoApp
+export default todoApp

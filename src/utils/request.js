@@ -45,17 +45,17 @@ service.interceptors.response.use(
   
         // 50008:非法的token; 50012:其他客户端登录了;  50014:Token 过期了;
         if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
-          window.location.replace('/login')
+         // window.location.replace('/login')
           Modal.alert('提示！','你已被登出，请重新登录', [
             { text: '重新登录', onPress: () => {
               window.location.replace('/login')
             }}
           ])
-          .then(() => {
-            store.dispatch('FedLogOut').then(() => {
-              window.location.reload()// 为了重新实例化vue-router对象 避免bug
-            })
-          })
+          // .then(() => {
+          //   store.dispatch('FedLogOut').then(() => {
+          //     window.location.reload()// 为了重新实例化vue-router对象 避免bug
+          //   })
+          // })
         }
         return Promise.reject('error')
       } else {
