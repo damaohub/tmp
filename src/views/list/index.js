@@ -34,7 +34,7 @@ class EvoList extends Component {
               <Accordion>
                 <Accordion.Panel
                   header={
-                    <Flex><Flex.Item>订单号：1231234</Flex.Item><Flex.Item className="text-right color-danger">12.5元</Flex.Item></Flex>
+                    <Flex><Flex.Item>订单号：1231234</Flex.Item><Flex.Item className="text-align-right text-color-danger padding-right">12.5元</Flex.Item></Flex>
                   }
                 >
                   <WingBlank>
