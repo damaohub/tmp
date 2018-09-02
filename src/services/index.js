@@ -4,7 +4,7 @@ import request from '../utils/request';
 
 export function orders() {
     return request({
-        url: 'orders',
+        url: 'pending-orders',
         method: 'post'
         
     })
