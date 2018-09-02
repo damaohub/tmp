@@ -66,9 +66,10 @@ service.interceptors.response.use(
       console.log('err' + error)// for debug
       Toast.fail(
         error.message,
-        2,
+        3,
         () => {
-          window.location.reload()
+          //可以进入错误页面
+          //window.location.reload()
         }
       )
       return Promise.reject(error)

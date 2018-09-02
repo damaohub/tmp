@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import  { Component } from 'react';
 import './timer.less'
 
 class Timer extends Component {
@@ -15,7 +15,7 @@ class Timer extends Component {
 
   countTime = (e) => {
     const end = this.props.endTimer
-    if(!isNaN(parseInt(end))) {
+    if(!isNaN(parseInt(end,0))) {
        let now = Date.parse(new Date())/1000
        let endTime = Date.parse(end)/1000
        let leftTime = endTime-now
@@ -23,11 +23,11 @@ class Timer extends Component {
        if(leftTime < 0) {
            window.clearInterval(this.interval)
        } else {
-           let d = Math.floor(leftTime/60/60/24)
+           //let d = Math.floor(leftTime/60/60/24)
            let h = Math.floor(leftTime/60/60%24)
            let m = Math.floor(leftTime/60%60)
            let s = Math.floor(leftTime%60)
-            if(h == 0){
+            if(h === 0){
                this.setState({result: `${this.p(m)}:${this.p(s)}` })
             }else{
                 this.setState({result: `${this.p(h)}:${this.p(m)}:${this.p(s)}` })
