@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './center.less'
-import Header from '../components/header';
-import Tabbar from '../components/tab'
+import Header from '@/components/header';
+import Tabbar from '@/components/tab'
 import { Flex, List } from 'antd-mobile';
 class Center extends Component {
   constructor(props) {

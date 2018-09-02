@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './home.less'
-import Tabbar from '../../components/tab'
-import Header from '../../components/header';
+import Tabbar from '@/components/tab'
+import Header from '@/components/header';
 import CardItem from './components/card';
 import {WingBlank } from 'antd-mobile';
-import { ordersHandel } from '../../store/actions';
+import { ordersHandel } from '@/store/actions';
 
 const mapStateToProps = (state,ownProps) => {
   return {

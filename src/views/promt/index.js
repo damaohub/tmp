@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './promt.less'
-import Header from '../components/header';
-import Tabbar from '../components/tab'
+import Header from '@/components/header';
+import Tabbar from '@/components/tab'
 import { Card, WingBlank, WhiteSpace, Flex, Button } from 'antd-mobile';
 
 

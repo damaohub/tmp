@@ -5,7 +5,7 @@ import './App.less';
 import { Route, Switch } from "react-router-dom";
 import Home from './views/home';
 import List from './views/list';
-import Center from './views/center';
+import Center from './views/center'
 import Promt from './views/promt'
 import Login from './views/login'
 class App extends Component {

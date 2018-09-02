@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './list.less'
-import Header from '../components/header'
-import Tabbar from '../components/tab'
+import Header from '@/components/header'
+import Tabbar from '@/components/tab'
 import { Tabs, Accordion, WingBlank, Flex, List } from 'antd-mobile';
 
 class EvoList extends Component {

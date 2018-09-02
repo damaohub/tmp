@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom';
 import './login.less'
-import logo from '../fonts/logo-big.png'
+import logo from '@/fonts/logo-big.png'
 import { List, WingBlank, WhiteSpace, Flex, Button, Toast } from 'antd-mobile'
-import Input from '../components/input'
-import { loginHandel } from '../store/actions';
+import Input from '@/components/input'
+import { loginHandel } from '@/store/actions';
 
 class Login extends Component {
   constructor(props) {
