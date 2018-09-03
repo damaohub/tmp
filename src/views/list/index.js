@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import './list.less'
+import { connect } from 'react-redux'
+import Rate from 'rc-rate';
 import Header from '@/components/header'
 import Tabbar from '@/components/tab'
 import { Tabs, Accordion, WingBlank, Flex, List } from 'antd-mobile';
+import { ordersHandel, historyOrdersHandel, complainListHandel } from '@/store/actions';
+
+
+const mapStateToProps = (state,ownProps) => {
+  return {
+    runningOrders: state.runningOrders,
+    historyOrders: state.historyOrders,
+    complainList: state.complainList
+  }
+}
 
 class EvoList extends Component {
   constructor(props) {
@@ -11,6 +23,35 @@ class EvoList extends Component {
       title: '任务列表'
     };
   }
+
+  componentDidMount () {
+    this.props.dispatch(ordersHandel(3)).then(
+      res => {
+        console.log(this.props.runningOrders)
+      }
+    )
+  }
+
+  tabChange = (tab, index) => {
+    if( index === 1) {
+      this.props.dispatch(complainListHandel()).then(
+        res => {
+          console.log(this.props.complainList)
+        }
+      )
+    }
+
+    if( index === 2) {
+      this.props.dispatch(historyOrdersHandel([4,5])).then(
+        res => {
+          console.log(this.props.historyOrders)
+        }
+      )
+    }
+    
+   }
+  
+
 
   render() {
 
@@ -28,50 +69,47 @@ class EvoList extends Component {
           <Tabs tabs={tabs}
             swipeable="false"
             animated="false"
-
+            onChange={this.tabChange}
           >
             <div className="jinxing-list">
-              <Accordion>
-                <Accordion.Panel
-                  header={
-                    <Flex><Flex.Item>订单号：1231234</Flex.Item><Flex.Item className="text-align-right text-color-danger padding-right">12.5元</Flex.Item></Flex>
-                  }
-                >
-                  <WingBlank>
-                    <Flex align="start">
-                      <Flex.Item>
-                        <div>任务要求：辅助者帐号必须在北京地区</div>
-                        <div>类型：非好友解封填资料</div>
-                        <div className="color-gray">可接受等级：</div>
-                      </Flex.Item>
-                      <Flex.Item className="qrcode">
-                        <img src="http://tech.cnr.cn/techgd/20141223/W020141223386402989617.gif" alt="" />
-                      </Flex.Item>
-                    </Flex>
-                  </WingBlank>
-                </Accordion.Panel>
-                <Accordion.Panel
-                  header={
-                    <Flex><Flex.Item>订单号：1231234</Flex.Item><Flex.Item className="text-right color-danger">12.5元</Flex.Item></Flex>
-                  }
-                >
-                  <WingBlank>
-                    <Flex >
-                      <Flex.Item>
-                        <div>任务要求：辅助者帐号必须在北京地区</div>
-                        <div>类型：非好友解封填资料</div>
-                        <div className="color-gray">可接受等级：</div>
-                      </Flex.Item>
-                      <Flex.Item className="qrcode">
-                        <img src="http://tech.cnr.cn/techgd/20141223/W020141223386402989617.gif" alt="" />
-                      </Flex.Item>
-                    </Flex>
-                  </WingBlank>
-                </Accordion.Panel>
-              </Accordion>
+              {this.props.runningOrders.map( order => {
+                return (
+                  <Accordion key={order.ID}>
+                  <Accordion.Panel
+                    header={
+                      <Flex><Flex.Item>订单号：{order.ID}</Flex.Item><Flex.Item className="text-align-right text-color-danger padding-right">{order.OrderPrice}元</Flex.Item></Flex>
+                    }
+                  >
+                    <WingBlank>
+                      <Flex align="start">
+                        <Flex.Item>
+                          <div>{order.ExtraMsg}</div>
+                          <div className="margin-vertical">类型：非好友解封填资料</div>
+                          <div className="color-gray">可接受等级：<Rate count={order.Star}  disabled /></div>
+                        </Flex.Item>
+                        <Flex.Item className="qrcode">
+                          <img src="http://tech.cnr.cn/techgd/20141223/W020141223386402989617.gif" alt="" />
+                        </Flex.Item>
+                      </Flex>
+                    </WingBlank>
+                  </Accordion.Panel>
+                </Accordion>
+                )
+              })}
+              
+              
+            
+              
             </div>
             <div className="shensu-list">
-              <List>
+              {this.props.complainList.map( item => {
+                return (
+                  <List>
+                    <List.Item extra={<span className="text-color-danger">拒绝</span>}>ID:{item.ID}</List.Item>
+                  </List> 
+                )
+              })}
+              {/* <List>
                 <List.Item extra={<span className="text-color-danger">拒绝</span>}>ID:1231231232</List.Item>
               </List> 
               <List>
@@ -82,18 +120,17 @@ class EvoList extends Component {
               </List>
               <List>
                 <List.Item extra={<span className="text-color-primary">其他</span>}>ID:1231hd1232</List.Item>
-              </List>
+              </List> */}
             </div>
             <div className="history-list">
-            <List>
-                <List.Item extra={<span className="text-color-danger">22.5元</span>}>ID:1231231232</List.Item>
-            </List>
-            <List>
-                <List.Item extra={<span className="text-color-danger">22.5元</span>}>ID:1231231232</List.Item>
-            </List>
-            <List>
-                <List.Item extra={<span className="text-color-danger">22.5元</span>}>ID:1231231232</List.Item>
-            </List>
+            {this.props.historyOrders.map( order => {
+              return (
+              <List key={order.ID}>
+                <List.Item extra={<span className="text-color-danger">{order.OrderPrice}元</span>}>ID:{order.ID}</List.Item>
+              </List>
+              )
+            })}
+           
             </div>
           </Tabs>
         </div>
@@ -101,4 +138,7 @@ class EvoList extends Component {
     )
   }
 }
+EvoList = connect(
+  mapStateToProps
+)(EvoList)
 export default EvoList

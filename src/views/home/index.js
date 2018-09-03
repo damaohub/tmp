@@ -10,7 +10,7 @@ import { ordersHandel } from '@/store/actions';
 const mapStateToProps = (state,ownProps) => {
   return {
     token: state.token,
-    orders: state.orders
+    orders: state.pengdingOrders
   }
 }
 
@@ -23,7 +23,7 @@ class Home extends Component {
   }
 
   componentDidMount () {
-    this.props.dispatch(ordersHandel()).then(
+    this.props.dispatch(ordersHandel(2)).then(
       res => {
         console.log(this.props.orders)
       }
