@@ -1,6 +1,6 @@
 
 import { getToken, setToken } from '../utils/auth'
-import {loginByUsername} from '../services/user'
+import {loginByUsername, getUser, getLowerCount} from '../services/user'
 import { orders, historyOrders, complainList } from '../services/index'
 
 export const InitToken =  {
@@ -27,13 +27,41 @@ export const loginHandel = userInfo => dispatch => {
             res => {
                 dispatch(a_setToken(res.data.token))
                 setToken(res.data.token)
-                resolve()
+                resolve(res)
             }).catch(
                 e => { reject(e) }
             )
             
     }) 
 }
+
+
+
+export const setUser = (userInfo) => {
+    return {
+        type: 'SET_USER',
+        userInfo
+    }
+}
+
+export const getUserHandel = () => dispatch => {
+    return new Promise((resolve, reject) => {
+        getUser().then(
+             res => {
+                 dispatch(setUser(res.data))
+                 resolve(res)
+             }).catch(
+                e => {
+                    console.log(e)
+                    reject(e)
+                }
+             )
+             
+     }) 
+ }
+
+ 
+
 
 
 export const requestOrder1= (orders) => {

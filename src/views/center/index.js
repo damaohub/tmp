@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
 import './center.less'
+import { connect } from 'react-redux'
 import Header from '@/components/header';
 import Tabbar from '@/components/tab'
 import { Flex, List } from 'antd-mobile';
+import { getUserHandel } from '@/store/actions';
+
+const mapStateToProps = (state,ownProps) => {
+  return {
+    userInfo: state.userInfo,
+  }
+}
+
 class Center extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '个人中心'
     };
+  }
+
+  componentDidMount () {
+    if(!this.props.userInfo.ID) { //非空时一定含有非零ID
+      this.props.dispatch(getUserHandel())
+    }
   }
 
   render() {
@@ -24,12 +39,12 @@ class Center extends Component {
            <Flex.Item className="info-inner padding">
               <Flex justify="between">
                 <div className="inner-before">
-                  <p>ID:21312321</p>
-                  <p>等级：xxxxxx</p>
+                  <p>姓名:{this.props.userInfo.RealName}</p>
+                  <p>手机号：{this.props.userInfo.Username}</p>
                 </div>
                  <div className="inner-after">
                   <p>账户余额</p>
-                  <p><span className="text-color-danger font-20">999</span>元</p>
+                  <p><span className="text-color-danger font-20">{(this.props.userInfo.Balance/10000).toString()}</span>元</p>
                  </div>
               </Flex>
            </Flex.Item>
@@ -74,4 +89,9 @@ class Center extends Component {
     )
   }
 }
+
+Center = connect(
+  mapStateToProps
+)(Center)
+
 export default Center

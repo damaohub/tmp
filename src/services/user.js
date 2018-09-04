@@ -9,3 +9,20 @@ export function loginByUsername(userInfo) {
         data:userInfo
     })
 }
+
+export function getUser() {
+    return request({
+        url: 'info',
+        method: 'post'
+    })
+}
+
+export function getLowerCount(id) {
+    return request({
+        url: 'lower-count',
+        method: 'post',
+        data: {
+            userId: id
+        }
+    })
+}

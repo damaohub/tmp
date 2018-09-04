@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import { InitToken } from '../actions'
 
 
+
 const token = (state = InitToken.token, action) => {
     switch (action.type) {
         case 'SET_TOKEN':
@@ -11,6 +12,16 @@ const token = (state = InitToken.token, action) => {
     }
 }
 
+// 获取用户信息
+
+const userInfo = (state={}, action) => {
+    switch(action.type) {
+        case 'SET_USER':
+            return action.userInfo
+        default:
+            return state    
+    }
+}
 
 //待付款订单
 const unpayOrders = (state = [], action) => {
@@ -23,7 +34,7 @@ const unpayOrders = (state = [], action) => {
 }
 
 // 未接订单
-const pengdingOrders = (state = [], action) => {
+const pendingOrders = (state = [], action) => {
     switch (action.type) {
         case 'REQUEST_ORDER2':
             return action.orders
@@ -72,7 +83,7 @@ const historyOrders = (state = [], action) => {
     }
 }
 
-//
+//申诉列表
 const complainList = (state = [], action) => {
     switch (action.type) {
         case 'COMPLAIN_LIST':
@@ -87,8 +98,9 @@ const complainList = (state = [], action) => {
 
 const todoApp = combineReducers({
     token,
+    userInfo,
     unpayOrders,
-    pengdingOrders,
+    pendingOrders,
     runningOrders,
     finishedOrders,
     refundOrders,

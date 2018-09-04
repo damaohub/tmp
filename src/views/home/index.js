@@ -10,7 +10,7 @@ import { ordersHandel } from '@/store/actions';
 const mapStateToProps = (state,ownProps) => {
   return {
     token: state.token,
-    orders: state.pengdingOrders
+    pendingOrders: state.pendingOrders
   }
 }
 
@@ -25,7 +25,7 @@ class Home extends Component {
   componentDidMount () {
     this.props.dispatch(ordersHandel(2)).then(
       res => {
-        console.log(this.props.orders)
+        console.log(this.props.pendingOrders)
       }
     )
   }
@@ -38,7 +38,7 @@ class Home extends Component {
         <div className="content">
         
           <WingBlank size="md" >
-            {this.props.orders.map( order => {
+            {this.props.pendingOrders.map( order => {
               return (
                 <CardItem  item={order} key={order.ID}/>
               )

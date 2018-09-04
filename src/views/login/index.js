@@ -5,7 +5,7 @@ import './login.less'
 import logo from '@/fonts/logo-big.png'
 import { List, WingBlank, WhiteSpace, Flex, Button, Toast } from 'antd-mobile'
 import Input from '@/components/input'
-import { loginHandel } from '@/store/actions';
+import { loginHandel, getUserHandel } from '@/store/actions';
 
 class Login extends Component {
   constructor(props) {
@@ -14,11 +14,16 @@ class Login extends Component {
       isDisabled: true,
       isLoading: false,
       token: null,
-      username: '',
-      password: ''
+      username: '15538307508',
+      password: 'admin666'
     };
   }
   
+  componentDidMount () {
+    if(this.state.username.trim().length!==0 && this.state.password.trim().length!==0) {
+      this.setState({"isDisabled": false})
+    }
+  }
 
   vauleChange = (e) => {
     this.setState({[e.target.name]:  e.target.value}, () => {
@@ -33,11 +38,12 @@ class Login extends Component {
 
   handleLogin = (e) => {
     if(this.state.username.trim().length!==0 && this.state.password.trim().length!==0) {
-      let userInfo = {username: this.state.username,password: this.state.password}
-      this.props.dispatch(loginHandel(userInfo)).then( 
+      let loginInfo = {username: this.state.username,password: this.state.password}
+      this.props.dispatch(loginHandel(loginInfo)).then(
         res => {
           this.setState({isLoading: true, isDisabled: true})
           Toast.success('登录成功！',2, () => {
+            this.props.dispatch(getUserHandel())
             this.props.history.push('/')
           })
         }
