@@ -1,6 +1,6 @@
 
 import { getToken, setToken } from '../utils/auth'
-import {loginByUsername, getUser, getLowerCount} from '../services/user'
+import {loginByUsername, getUser} from '../services/user'
 import { orders, historyOrders, complainList } from '../services/index'
 
 export const InitToken =  {

@@ -12,7 +12,7 @@ class Header extends Component {
         return (
             <NavBar
             icon={<Icon type="left" />}
-            onLeftClick={() => console.log('onLeftClick')}
+            onLeftClick={() =>{window.history.back()}}
             rightContent={[
                 <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                 <Icon key="1" type="ellipsis" />,

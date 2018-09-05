@@ -117,7 +117,7 @@ class Promt extends Component {
                 <small>说明文字奥术大师多</small>
               </div>
               <WingBlank size="lg">
-                <Button type="primary">提现</Button>
+                <Button type="primary" onClick={() => {this.props.history.push('/withdraw')}}>提现</Button>
                 <WhiteSpace size="md" />
               </WingBlank>
             </Card.Body>

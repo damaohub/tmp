@@ -53,7 +53,7 @@ class Center extends Component {
           <List.Item
             thumb={<i className="iconfont text-color-primary">&#xe611;</i>}
             arrow="horizontal"
-            onClick={() => {}}
+            onClick={() => {this.props.history.push('/bill')}}
           >
             金额明细
           </List.Item>
