@@ -10,6 +10,7 @@ import Promt from './views/promt'
 import Login from './views/login'
 import Withdraw from './views/withdraw'
 import Bill from './views/bill'
+import Test from './views/other1'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,7 @@ class App extends Component {
           <Route path='/login' component={Login} />
           <Route path='/withdraw' component={Withdraw} />
           <Route path='/bill' component={Bill} />
+          <Route path='/test' component={Test} />
         </Switch>
 
       </div>

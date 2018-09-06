@@ -1,7 +1,7 @@
 
 import { getToken, setToken } from '../utils/auth'
 import {loginByUsername, getUser} from '../services/user'
-import { orders, historyOrders, complainList } from '../services/index'
+import { orders, historyOrders, complainList, billList } from '../services/index'
 
 export const InitToken =  {
    token: getToken() ||null
@@ -175,6 +175,27 @@ export const complainListHandel = () => dispatch => {
             res => {
                 dispatch(requestComplainList(res.data))
                 resolve()
+            }
+        ).catch(
+            e => { reject(e) }
+        )
+    })
+}
+
+
+export const saveComplainList = (list) => {
+    return {
+        type: 'BILL_LIST',
+        list
+
+    }
+}
+export const billListHandel = (page, pageSize) => dispatch => {
+    return new Promise((resolve, reject) => {
+        billList(page, pageSize).then(
+            res => {
+                dispatch(saveComplainList(res.data))
+                resolve(res)
             }
         ).catch(
             e => { reject(e) }

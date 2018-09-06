@@ -29,3 +29,14 @@ export function complainList() {
         method: 'post'   
     })
 }
+
+export function billList(_page, _pageSize) {
+    return request({
+        url: 'bill',
+        method: 'post',
+        data: {
+            page: _page,
+            pageSize: _pageSize
+        }   
+    })
+}

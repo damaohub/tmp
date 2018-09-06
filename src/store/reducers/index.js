@@ -93,7 +93,15 @@ const complainList = (state = [], action) => {
     }
 }
 
-
+//订单列表
+const billList = (state = [], action) => {
+    switch (action.type) {
+        case 'BILL_LIST':
+            return action.list
+        default:
+            return state
+    }
+}
 
 
 const todoApp = combineReducers({
@@ -105,7 +113,8 @@ const todoApp = combineReducers({
     finishedOrders,
     refundOrders,
     historyOrders,
-    complainList
+    complainList,
+    billList
 })
   
 export default todoApp
