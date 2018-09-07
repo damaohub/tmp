@@ -13,33 +13,20 @@ const mapStateToProps = (state,ownProps) => {
   }
 }
 
-const data = [
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-    title: 'Meet hotel',
-    des: '不是所有的兼职汪都需要风吹日晒',
-  },
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
-    title: 'McDonald\'s invites you',
-    des: '不是所有的兼职汪都需要风吹日晒',
-  },
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
-    title: 'Eat the week',
-    des: '不是所有的兼职汪都需要风吹日晒',
-  },
-];
+
 const NUM_ROWS = 5;
 let pageIndex = 0;
 
-function genData(pIndex = 0) {
-  const dataArr = [];
-  for (let i = 0; i < NUM_ROWS; i++) {
-    dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
+function genData(pIndex = 1, data=[]) {
+  const dataBlob = {};
+  // const dataArr = [];
+  for (let i = 0; i <data.length ; i++) {
+    const ii = ((pIndex-1) * data.length) + i;
+    dataBlob[`${ii}`] = data[ii];
+    // dataArr.push(`row - ${(pIndex * pSize) + i}`);
   }
-  console.log(dataArr)
-  return dataArr;
+  console.log(dataBlob)
+  return dataBlob;
   
 }
 
@@ -85,24 +72,25 @@ class Bill  extends Component {
   componentDidMount () {
     const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
     this.props.dispatch(billListHandel(this.state.page,this.state.pageSize)).then(v => {
-      // this.setState({
-      //         dataSource: this.state.dataSource.cloneWithRows(this.props.billList),
-      //         height: hei,
-      //         refreshing: false,
-      //         isLoading: false,
-      //       });
+      this.rData = genData(1,this.props.billList);
+      this.setState({
+              dataSource: this.state.dataSource.cloneWithRows(this.rData),
+              height: hei,
+              refreshing: false,
+              isLoading: false,
+            });
     })
    
     
-    setTimeout(() => {
-      this.rData = genData();
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(genData()),
-        height: hei,
-        refreshing: false,
-        isLoading: false,
-      });
-    }, 1500);
+    // setTimeout(() => {
+    //   this.rData = genData();
+    //   this.setState({
+    //     dataSource: this.state.dataSource.cloneWithRows(genData()),
+    //     height: hei,
+    //     refreshing: false,
+    //     isLoading: false,
+    //   });
+    // }, 1500);
     
 
   }
@@ -116,39 +104,40 @@ class Bill  extends Component {
     }
     console.log('reach end', event);
     this.setState({ isLoading: true });
-    setTimeout(() => {
-      this.rData = [...this.rData, ...genData(++pageIndex)];
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(this.rData),
-        isLoading: false,
-      });
-    }, 1000);
+    //this.props.dispatch(billListHandel(this.state.page,this.state.pageSize))
+    // setTimeout(() => {
+    //   this.rData = [...this.rData, ...genData(++pageIndex)];
+    //   console.log(this.rData)
+    //   this.setState({
+    //     dataSource: this.state.dataSource.cloneWithRows(this.rData),
+    //     isLoading: false,
+    //   });
+    // }, 1000);
   };
 
 
 
   render() {
-    let index =this.props.billList.length - 1;
+  
     const row = (rowData, sectionID, rowID) => {
-      if (index < 0) {
-        index = this.props.billList.length - 1;
-      }
-      const obj = this.props.billList[index--];
+    
       return (
         <div key={rowID}
           style={{
             padding: '0 15px',
             backgroundColor: 'white',
+            borderBottom: '1px solid #ddd'
           }}
         >
-          <div style={{ height: '50px', lineHeight: '50px', color: '#888', fontSize: '18px', borderBottom: '1px solid #ddd' }}>
-            {obj.ID}
+          <div style={{ height: '50px', lineHeight: '50px', color: '#888', fontSize: '18px'  }}>
+            {rowData.ID}
           </div>
+          <div>rowID:{rowID}</div>
+          <div>rowData:{rowData.CreateTime}</div>
           <div style={{ display: '-webkit-box', display: 'flex', padding: '15px' }}>
-            <span>{obj.CreateTime}</span>
-            <div style={{ display: 'inline-block' }}>
-              <div style={{ marginBottom: '8px', color: '#000', fontSize: '16px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '250px' }}>{obj.Amount}-{rowData}</div>
-              <div style={{ fontSize: '16px' }}><span style={{ fontSize: '30px', color: '#FF6E27' }}>{obj.RemainAmount}</span> 元/任务</div>
+            <div style={{ display: 'block' }}>
+              <div style={{ marginBottom: '8px', color: '#000', fontSize: '16px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '250px' }}>{rowData.Amount}</div>
+              <div style={{ fontSize: '16px' }}><span style={{ fontSize: '30px', color: '#FF6E27' }}>{rowData.RemainAmount}</span> 元/任务</div>
             </div>
           </div>
         </div>
