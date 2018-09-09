@@ -8,21 +8,19 @@ import {  billListHandel } from '@/store/actions';
 
 const mapStateToProps = (state,ownProps) => {
   return {
-
     billList: state.billList
   }
 }
 
 
 const NUM_ROWS = 5;
-let pageIndex = 0;
+let pageIndex = 1;
 
-function genData(pIndex = 1, data=[]) {
+function genData(data=[]) {
   const dataBlob = {};
   // const dataArr = [];
   for (let i = 0; i <data.length ; i++) {
-    const ii = ((pIndex-1) * data.length) + i;
-    dataBlob[`${ii}`] = data[ii];
+    dataBlob[`row-${i}`] = data[i];
     // dataArr.push(`row - ${(pIndex * pSize) + i}`);
   }
   console.log(dataBlob)
@@ -43,10 +41,9 @@ class Bill  extends Component {
       dataSource,
       refreshing: true,
       isLoading: true,
+      hasMore: false,
       height: document.documentElement.clientHeight,
-      useBodyScroll: false,
-      page: 1,
-      pageSize: 5
+      useBodyScroll: false
     }
    
   }
@@ -71,8 +68,8 @@ class Bill  extends Component {
 
   componentDidMount () {
     const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
-    this.props.dispatch(billListHandel(this.state.page,this.state.pageSize)).then(v => {
-      this.rData = genData(1,this.props.billList);
+    this.props.dispatch(billListHandel(pageIndex,NUM_ROWS)).then(v => {
+      this.rData = genData(this.props.billList);
       this.setState({
               dataSource: this.state.dataSource.cloneWithRows(this.rData),
               height: hei,
@@ -80,19 +77,6 @@ class Bill  extends Component {
               isLoading: false,
             });
     })
-   
-    
-    // setTimeout(() => {
-    //   this.rData = genData();
-    //   this.setState({
-    //     dataSource: this.state.dataSource.cloneWithRows(genData()),
-    //     height: hei,
-    //     refreshing: false,
-    //     isLoading: false,
-    //   });
-    // }, 1500);
-    
-
   }
 
 
@@ -104,6 +88,22 @@ class Bill  extends Component {
     }
     console.log('reach end', event);
     this.setState({ isLoading: true });
+    
+    this.props.dispatch(billListHandel(++pageIndex,NUM_ROWS)).then( v => {
+      if(v.data.length === 0) {
+        console.log(v)
+        this.setState({
+          hasMore: true
+        }, () => {
+          return
+        })
+      }
+      this.rData = genData(this.props.billList);
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(this.rData),
+        isLoading: false,
+      });
+    }) 
     //this.props.dispatch(billListHandel(this.state.page,this.state.pageSize))
     // setTimeout(() => {
     //   this.rData = [...this.rData, ...genData(++pageIndex)];

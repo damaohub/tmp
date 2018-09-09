@@ -183,7 +183,7 @@ export const complainListHandel = () => dispatch => {
 }
 
 
-export const saveComplainList = (list) => {
+export const saveBillList = (list) => {
     return {
         type: 'BILL_LIST',
         list
@@ -194,7 +194,7 @@ export const billListHandel = (page, pageSize) => dispatch => {
     return new Promise((resolve, reject) => {
         billList(page, pageSize).then(
             res => {
-                dispatch(saveComplainList(res.data))
+                dispatch(saveBillList(res.data))
                 resolve(res)
             }
         ).catch(

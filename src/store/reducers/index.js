@@ -97,7 +97,7 @@ const complainList = (state = [], action) => {
 const billList = (state = [], action) => {
     switch (action.type) {
         case 'BILL_LIST':
-            return action.list
+            return state.concat(action.list)
         default:
             return state
     }
