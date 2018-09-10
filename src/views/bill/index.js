@@ -130,8 +130,12 @@ class Bill  extends Component {
       return (
         <List key={rowID}>
           <List.Item
-            extra={<div><div><small>{parseTime(rowData.CreateTime)}</small></div>  <div className="text-color-black"><strong>{this.type(rowData.Type).regu}{rowData.Amount/10000}</strong></div></div>}
-            
+            extra={
+            <div>
+              <div><small>{parseTime(rowData.CreateTime)}</small></div>
+              <div className="text-color-black"><strong>{this.type(rowData.Type).regu}{rowData.Amount/10000}</strong></div>
+              </div>
+              }   
           >
             {this.type(rowData.Type).text} <List.Item.Brief>余额：{rowData.RemainAmount/10000}</List.Item.Brief>
           </List.Item>
@@ -143,9 +147,7 @@ class Bill  extends Component {
     return (
       <div className="page page-withdraw">
         <Header title={this.state.title}  back/>
-        
-        <div className="content">
-            
+        <div className="content">      
           <ListView
             dataSource={this.state.dataSource}
             renderRow={row}
