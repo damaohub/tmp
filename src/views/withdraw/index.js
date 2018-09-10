@@ -54,7 +54,7 @@ class Withdraw  extends Component {
     const _userInfo = this.props.userInfo
     return (
       <div className="page page-withdraw">
-        <Header title={this.state.title} />
+        <Header title={this.state.title} back="ture"/>
         
         <div className="content">
             <WingBlank size="md">

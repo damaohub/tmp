@@ -8,15 +8,23 @@ class Header extends Component {
         };
     }
 
+    backIcon = (isBack) => {
+            if(isBack) {
+                return (
+                    <Icon type="left" onClick={ () => {window.history.back()}}/>
+                )
+            }else {
+                return null
+            }
+    }
     render() {
         return (
             <NavBar
-            icon={<Icon type="left" />}
-            onLeftClick={() =>{window.history.back()}}
-            rightContent={[
-                <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-                <Icon key="1" type="ellipsis" />,
-            ]}
+            icon={ this.backIcon(this.props.back) }
+            //onLeftClick={() =>{window.history.back()}}
+            // rightContent={[
+            //     <Icon key="1" type="ellipsis" />,
+            // ]}
             style={{position: "fixed", width: "100%", zIndex: 10 }}
             >
             {this.props.title}

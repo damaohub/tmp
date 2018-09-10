@@ -29,7 +29,7 @@ class Center extends Component {
   render() {
     return (
       <div className="page page-center">
-        <Header title={this.state.title}/>
+        <Header title={this.state.title} />
         <Tabbar />
         <div className="content">
          <Flex className="info padding">
@@ -44,7 +44,7 @@ class Center extends Component {
                 </div>
                  <div className="inner-after">
                   <p>账户余额</p>
-                  <p><span className="text-color-danger font-20">{(this.props.userInfo.Balance/10000).toString()}</span>元</p>
+                  <p><span className="text-color-warning font-20">{(this.props.userInfo.Balance/10000).toString()}</span>元</p>
                  </div>
               </Flex>
            </Flex.Item>
