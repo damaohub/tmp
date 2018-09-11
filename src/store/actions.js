@@ -1,7 +1,7 @@
 
 import { getToken, setToken } from '../utils/auth'
 import {loginByUsername, getUser} from '../services/user'
-import { orders, historyOrders, complainList, billList } from '../services/index'
+import { orders, historyOrders, complainList, billList, withdraw } from '../services/index'
 
 export const InitToken =  {
    token: getToken() ||null
@@ -202,3 +202,18 @@ export const billListHandel = (page, pageSize) => dispatch => {
         )
     })
 }
+
+
+export const withdrawHandel = (value) => dispatch => {
+    return new Promise((resolve, reject) => {
+        withdraw(value).then(
+            res => {
+                dispatch(getUserHandel())
+                resolve(res)
+            }
+        ).catch(
+            e => { reject(e) }
+        )
+    })
+}
+

@@ -3,7 +3,7 @@ import './withdraw.less'
 import { connect } from 'react-redux'
 import Header from '@/components/header';
 import { Card, WingBlank, List, InputItem, Button } from 'antd-mobile';
-import { getUserHandel } from '@/store/actions';
+import { getUserHandel, withdrawHandel, billListHandel } from '@/store/actions';
 const mapStateToProps = (state,ownProps) => {
   return {
     userInfo: state.userInfo,
@@ -44,7 +44,11 @@ class Withdraw  extends Component {
   }
  
   handelSubmit = (e) => {
-      console.log(this.state.acount)
+      this.props.dispatch(withdrawHandel(this.state.acount)).then(
+        v=> {
+            console.log(v)
+        }   
+      )
       this.setState({acount: ''})
       this.setState({"isDisabled": true})
   }

@@ -40,3 +40,13 @@ export function billList(_page, _pageSize) {
         }   
     })
 }
+
+export function withdraw(value) {
+    return request({
+        url: 'withdraw',
+        method: 'post',
+        data: {
+            amount: value
+        }   
+    })
+}
