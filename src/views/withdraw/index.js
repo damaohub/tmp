@@ -3,7 +3,7 @@ import './withdraw.less'
 import { connect } from 'react-redux'
 import Header from '@/components/header';
 import { Card, WingBlank, List, InputItem, Button } from 'antd-mobile';
-import { getUserHandel, withdrawHandel, billListHandel } from '@/store/actions';
+import { getUserHandel, withdrawHandel } from '@/store/actions';
 const mapStateToProps = (state,ownProps) => {
   return {
     userInfo: state.userInfo,
