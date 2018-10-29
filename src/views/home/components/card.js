@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import QRCode from 'qrcode.react'
 import './card.less'
 import { Card,  Flex, Button, Modal, WingBlank } from 'antd-mobile';
 import Rate from 'rc-rate';
@@ -15,6 +16,13 @@ class CardItem extends Component {
   }
   onClose = e => {
     this.setState({modal: false})
+  }
+  showInfo = (info) => {
+    if(info.phone) {
+        return `${info.cc}-${info.phone}`
+    }else {
+        return <QRCode value="https://www.baidu.com/"/>
+    }
   }
 
   render () {
@@ -60,7 +68,7 @@ class CardItem extends Component {
                     </Flex>
                     <Flex justify="center" className="margin-top">
                         <Flex.Item className="text-align-center ">
-                            <p>{this.props.item.Info}</p>
+                            <p>{ this.showInfo(JSON.parse(this.props.item.Info))}</p>
                         </Flex.Item>
                     </Flex>
                     <Flex justify="center" className="margin-top">
