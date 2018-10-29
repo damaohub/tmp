@@ -6,7 +6,7 @@ import { Toast, Modal } from 'antd-mobile';
 
 // create an axios instance
 const service = axios.create({
-    baseURL: "http://localhost:3000/api/", // api的base_url
+    baseURL: "https://maochenhui.top/api/", // api的base_url
     timeout: 5000 // request timeout
 })
 
