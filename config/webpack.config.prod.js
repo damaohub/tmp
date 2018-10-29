@@ -206,7 +206,8 @@ module.exports = {
                       },
                     },
                     {
-                      loader: require.resolve('less-loader') // compiles Less to CSS
+                      loader: require.resolve('less-loader'),
+                      options: { javascriptEnabled: true }  // compiles Less to CSS
                     },
                   ],
                 },
