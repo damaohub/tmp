@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './promt.less'
 import { connect } from 'react-redux'
 import Header from '@/components/header';
 import Tabbar from '@/components/tab'
-import { Card, WingBlank, WhiteSpace, Flex, Button } from 'antd-mobile';
+import { Card, WingBlank, WhiteSpace, Flex, Button, Toast } from 'antd-mobile';
 import { getUserHandel, ordersHandel } from '@/store/actions';
 
 const mapStateToProps = (state,ownProps) => {
@@ -18,7 +19,8 @@ class Promt extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '推广中心'
+      title: '推广中心',
+      copied: false,
     };
   }
 
@@ -39,7 +41,11 @@ class Promt extends Component {
 
    getRate = () => {
      return this.props.refundOrders.length/(this.props.finishedOrders.length + this.props.refundOrders.length)*100
-   }  
+   }
+
+   onCopy =() => {
+    Toast.success('复制成功', 1)
+   }
 
   render() {
     return (
@@ -131,11 +137,11 @@ class Promt extends Component {
               </Card.Header>
               <Card.Body>
                 <Flex justify="between" className="margin-bottom"><div>推广码：</div><div className="pcode">{this.props.userInfo.InviteCode}</div></Flex>
-                <Flex justify="between" className="margin-bottom"><div style={{minWidth: "5em" }}>推广链接：</div> <div className="plink">https://www.wj.ink/spread.action?con=E07AAC1253</div> </Flex>
+                <Flex justify="between" className="margin-bottom"><div style={{minWidth: "5em" }}>推广链接：</div> <div className="plink">https://balaba.com/balba.action?con=E07AAC1253</div> </Flex>
               </Card.Body>
             <Card.Footer
-                content={<span className="text-color-primary">复制推广码</span>}
-                extra={<span className="text-color-primary">复制推广链接</span>}
+                content={<CopyToClipboard  onCopy={this.onCopy} text={this.props.userInfo.InviteCode} ><span className="text-color-primary">复制推广码</span></CopyToClipboard> }
+                extra={ <CopyToClipboard onCopy={this.onCopy} text="https://balaba.com/balba.action?con=E07AAC1253"><span className="text-color-primary">复制推广链接</span></CopyToClipboard> }
             >
 
             </Card.Footer>

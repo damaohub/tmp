@@ -44,7 +44,7 @@ class Withdraw  extends Component {
   }
  
   handelSubmit = (e) => {
-      this.props.dispatch(withdrawHandel(this.state.acount)).then(
+      this.props.dispatch(withdrawHandel((this.state.acount)*10000)).then(
         v=> {
             console.log(v)
         }   
@@ -70,7 +70,7 @@ class Withdraw  extends Component {
                     extra={parseInt(_userInfo.Alipay,10) === -1 ? '添加账号': _userInfo.Alipay}
                     onClick={(e) => {
                       if(parseInt(_userInfo.Alipay,10) === -1) {
-                        alert('添加账号')
+                        alert('添加账号页面')
                       }else{
                         e.preventDefault();
                       }
