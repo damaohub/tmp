@@ -1,7 +1,7 @@
 import "babel-polyfill";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import store from './store/index'
 import { Provider } from 'react-redux';
 import './index.css';
@@ -11,9 +11,9 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
     <Provider store={store}>
-        <BrowserRouter basename={'/demo1'}>
+        <HashRouter >
             <App />
-        </BrowserRouter>
+        </HashRouter>
     </Provider>
 ), document.getElementById('root'));
 registerServiceWorker();
